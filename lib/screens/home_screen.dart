@@ -41,8 +41,6 @@ class _HomeScreenState extends State<HomeScreen>
       Navigator.pushNamed(context, AppRoutes.settings);
     } else if (index == 0) {
       // Already on home screen
-    } else if (index == 2) {
-      // Navigate to profile (not implemented yet)
     }
   }
 

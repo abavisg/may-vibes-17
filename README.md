@@ -18,6 +18,7 @@ TweenVibes is built with Flutter and follows a clean, modular architecture:
 - **Theme**: Consistent color scheme and styling across the app
 - **Custom Widgets**: Includes a custom-drawn globe visualization
 - **Form Inputs**: Uses TextField, DropdownButtonFormField, and Slider for user input
+- **Navigation**: Simple two-tab navigation system (Mood and Settings)
 
 ## Getting Started
 
@@ -38,7 +39,8 @@ lib/
 │   ├── home_screen.dart
 │   └── settings_screen.dart
 ├── widgets/
-│   └── globe_widget.dart
+│   ├── globe_widget.dart
+│   └── custom_bottom_navigation.dart
 ├── theme/
 │   └── app_theme.dart
 └── utils/

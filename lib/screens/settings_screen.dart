@@ -51,8 +51,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
       Navigator.pushReplacementNamed(context, AppRoutes.home);
     } else if (index == 1) {
       // Already on settings screen
-    } else if (index == 2) {
-      // Navigate to profile (not implemented yet)
     }
   }
 
