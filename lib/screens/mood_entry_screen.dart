@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tweenvibes/utils/constants.dart';
 import 'package:tweenvibes/utils/routes.dart';
+import 'package:tweenvibes/theme/app_theme.dart';
 
 class MoodEntryScreen extends StatefulWidget {
   const MoodEntryScreen({super.key});
@@ -46,8 +47,9 @@ class _MoodEntryScreenState extends State<MoodEntryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.white,
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.close, color: Colors.black87),
@@ -55,28 +57,71 @@ class _MoodEntryScreenState extends State<MoodEntryScreen> {
             Navigator.of(context).pop();
           },
         ),
-        title: const Text('Record Your Mood'),
+        title: const Text(
+          'How are you feeling?',
+          style: TextStyle(
+            color: AppTheme.textColor,
+            fontWeight: FontWeight.w600,
+            fontSize: 18,
+          ),
+        ),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(24.0),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              // Mood Question
-              Text(
-                Constants.moodQuestionLabel,
-                style: Theme.of(context).textTheme.headlineSmall,
+              // Emoji Display (Larger and centered)
+              Container(
+                width: 120,
+                height: 120,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: AppTheme.primaryColor.withOpacity(0.1),
+                ),
+                child: Center(
+                  child: Text(
+                    _selectedEmoji,
+                    style: const TextStyle(fontSize: 60),
+                  ),
+                ),
               ),
 
               const SizedBox(height: 30),
 
-              // Mood Slider and Value
-              Row(
+              // Mood Slider
+              Column(
                 children: [
-                  const Text('0'),
-                  Expanded(
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
+                        'Sad',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      const Text(
+                        'Happy',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 8),
+                  SliderTheme(
+                    data: SliderTheme.of(context).copyWith(
+                      trackHeight: 8.0,
+                      thumbShape:
+                          const RoundSliderThumbShape(enabledThumbRadius: 12),
+                      overlayShape:
+                          const RoundSliderOverlayShape(overlayRadius: 20),
+                    ),
                     child: Slider(
                       value: _moodValue,
                       min: 0,
@@ -85,40 +130,31 @@ class _MoodEntryScreenState extends State<MoodEntryScreen> {
                       onChanged: _updateMoodEmoji,
                     ),
                   ),
-                  const Text('10'),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text('0'),
+                      const Text('5'),
+                      const Text('10'),
+                    ],
+                  ),
                 ],
               ),
 
-              const SizedBox(height: 20),
-
-              // Selected Emoji Display
-              Center(
-                child: Column(
-                  children: [
-                    Text(
-                      Constants.chooseEmojiLabel,
-                      style: Theme.of(context).textTheme.titleMedium,
-                    ),
-                    const SizedBox(height: 12),
-                    Text(
-                      _selectedEmoji,
-                      style: const TextStyle(fontSize: 60),
-                    ),
-                  ],
-                ),
-              ),
-
-              const SizedBox(height: 30),
+              const SizedBox(height: 40),
 
               // Journal Entry
-              Text(
-                Constants.journalEntryLabel,
-                style: Theme.of(context).textTheme.titleMedium,
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  Constants.journalEntryLabel,
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
               ),
               const SizedBox(height: 12),
               Container(
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: Colors.grey.shade50,
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(color: Colors.grey.shade200),
                 ),
@@ -138,23 +174,25 @@ class _MoodEntryScreenState extends State<MoodEntryScreen> {
               // Share Mood Button
               SizedBox(
                 width: double.infinity,
+                height: 56,
                 child: ElevatedButton(
                   onPressed: () {
                     // In a real app, save the mood entry to a database
                     Navigator.pushReplacementNamed(context, AppRoutes.home);
                   },
-                  child: const Text(Constants.shareMoodButton),
-                ),
-              ),
-
-              const SizedBox(height: 20),
-
-              // Copyright
-              Center(
-                child: Text(
-                  Constants.copyright,
-                  style: Theme.of(context).textTheme.bodySmall,
-                  textAlign: TextAlign.center,
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    elevation: 0,
+                  ),
+                  child: const Text(
+                    Constants.shareMoodButton,
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
                 ),
               ),
             ],
