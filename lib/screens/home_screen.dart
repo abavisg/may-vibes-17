@@ -142,7 +142,7 @@ class _HomeScreenState extends State<HomeScreen>
       ),
       body: Column(
         children: [
-          // AI Forecast Banner - Now positioned directly below the app bar
+          // Forecast Banner - Now positioned directly below the app bar
           Padding(
             padding: const EdgeInsets.fromLTRB(24.0, 12.0, 24.0, 16.0),
             child: Container(
@@ -169,12 +169,10 @@ class _HomeScreenState extends State<HomeScreen>
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: const Center(
-                      child: Text(
-                        'AI',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: AppTheme.primaryColor,
-                        ),
+                      child: Icon(
+                        Icons.insights,
+                        color: AppTheme.primaryColor,
+                        size: 20,
                       ),
                     ),
                   ),
