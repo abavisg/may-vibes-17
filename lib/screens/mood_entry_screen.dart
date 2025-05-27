@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tweenvibes/utils/constants.dart';
 import 'package:tweenvibes/utils/routes.dart';
-import 'package:tweenvibes/theme/app_theme.dart';
 
 class MoodEntryScreen extends StatefulWidget {
   const MoodEntryScreen({super.key});
@@ -27,7 +26,7 @@ class _MoodEntryScreenState extends State<MoodEntryScreen> {
     7: '😄',
     8: '😁',
     9: '🤩',
-    10: '🥳',
+    10: '🥳'
   };
 
   @override
@@ -93,20 +92,12 @@ class _MoodEntryScreenState extends State<MoodEntryScreen> {
                   children: [
                     const Text('0'),
                     Expanded(
-                      child: SliderTheme(
-                        data: SliderTheme.of(context).copyWith(
-                          activeTrackColor: AppTheme.primaryColor,
-                          inactiveTrackColor: Colors.grey.shade300,
-                          thumbColor: AppTheme.primaryColor,
-                          trackHeight: 6.0,
-                        ),
-                        child: Slider(
-                          value: _moodValue,
-                          min: 0,
-                          max: 10,
-                          divisions: 10,
-                          onChanged: _updateMoodEmoji,
-                        ),
+                      child: Slider(
+                        value: _moodValue,
+                        min: 0,
+                        max: 10,
+                        divisions: 10,
+                        onChanged: _updateMoodEmoji,
                       ),
                     ),
                     const Text('10'),

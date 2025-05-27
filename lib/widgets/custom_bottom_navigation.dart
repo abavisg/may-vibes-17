@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tweenvibes/utils/routes.dart';
 
 class CustomBottomNavigation extends StatelessWidget {
   final int selectedIndex;

@@ -178,7 +178,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.red.shade400,
                         ),
-                        child: Text(Constants.logOutButton),
+                        child: const Text(Constants.logOutButton),
                       ),
                     ),
                   ],

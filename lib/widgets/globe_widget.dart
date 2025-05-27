@@ -100,7 +100,7 @@ class GlobePainter extends CustomPainter {
 
     // Draw continents (simple shapes as placeholders)
     final Paint continentPaint = Paint()
-      ..color = AppTheme.accentColor
+      ..color = AppTheme.secondaryColor
       ..style = PaintingStyle.fill;
 
     // North America
