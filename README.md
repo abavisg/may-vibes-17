@@ -1,4 +1,4 @@
-# TweenVibes
+# TwinVibes
 
 A mood-tracking app for teens to express their emotions and track mood patterns over time.
 
@@ -7,18 +7,26 @@ A mood-tracking app for teens to express their emotions and track mood patterns 
 - **Welcome Screen**: Introduction to the app with options to join or sign in
 - **Sign Up**: Create an account with email, birthday, and timezone
 - **Mood Entry**: Record your mood on a scale from 0 to 10, select an emoji, and write a journal entry
-- **Home Screen**: View your mood patterns with a dynamic globe visualization
+- **Home Screen**: View your mood patterns with an interactive map visualization
 - **Settings**: Manage your profile information and app preferences
 
 ## Implementation Details
 
-TweenVibes is built with Flutter and follows a clean, modular architecture:
+TwinVibes is built with Flutter and follows a clean, modular architecture:
 
 - **Screens**: Each screen is implemented as a separate widget class
 - **Theme**: Consistent color scheme and styling across the app
-- **Custom Widgets**: Includes a custom-drawn globe visualization
+- **Map Visualization**: Interactive map that displays user moods with color-coded avatars
 - **Form Inputs**: Uses TextField, DropdownButtonFormField, and Slider for user input
 - **Navigation**: Modern navigation with floating action button and modal screens
+
+## Features
+
+### Interactive Map
+- Zoomable, pannable world map using flutter_map
+- Color-coded user avatars (red for low mood, yellow for neutral, green for high mood)
+- Tap on avatars to view detailed mood information
+- Dynamic forecast that updates every 30 minutes
 
 ## Getting Started
 
@@ -39,10 +47,16 @@ lib/
 │   ├── home_screen.dart
 │   └── settings_screen.dart
 ├── widgets/
-│   └── globe_widget.dart
+│   └── twin_map_view.dart
 ├── theme/
 │   └── app_theme.dart
 └── utils/
     ├── constants.dart
     └── routes.dart
 ```
+
+## Dependencies
+
+- flutter_map: ^8.1.1
+- latlong2: ^0.9.0
+- http: ^1.4.0
